@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Component
 public class OrderReceiver {
-
+    private int i=0;
     /**
      * 接收消息
      *
@@ -36,7 +36,9 @@ public class OrderReceiver {
     @RabbitHandler
     public void onOrderMessage(@Payload Order order, @Headers Map<String, Object> headers, Channel channel) throws Exception {
         // 消费者操作
-        System.out.println("收到消息：");
+
+        System.out.println("收到消息："+i);
+        i++;
         System.out.println("订单信息：" + order.toString());
 
         // 手动签收消息
